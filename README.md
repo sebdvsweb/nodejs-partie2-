@@ -4,7 +4,7 @@
 
 ### Objectif
 
-Créer dans un sous-dossier une application Express simple qui utilise Mustache pour le rendu des vues et bodyParser pour lire les données POST des formulaires.
+Créer une application Express simple qui utilise Mustache pour le rendu des vues et bodyParser pour lire les données POST des formulaires.
 
 ### Étapes d'installation
 
@@ -88,7 +88,7 @@ Rôle de chaque élément :
 
 ### Objectif
 
-Créer dans un sous-dossier une application Express pour visualiser et ajouter des personnages Marvel. Les personnages sont stockés dans un fichier JSON.
+Créer une application Express pour visualiser et ajouter des personnages Marvel. Les personnages sont stockés dans un fichier JSON.
 
 ### Étapes et Explications
 
@@ -118,7 +118,7 @@ Ajoutez un fichier index.mustache dans le dossier views.
 Y ajouter un formulaire HTML contenant les champs nécessaires (nom, série, image, description, et le bouton d'envoi).
 Ajouter ensuite un code permettant l'affichage des personnages présents dans le fichier json grâce aux variables définies dans le fichier `index.js`.
 
-3. Création du fichier index.js :
+3. Création du fichier index_marvel.js :
 
 Créez ou mettez à jour le fichier index.js avec le contenu suivant :
 
