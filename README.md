@@ -4,7 +4,7 @@
 
 ### Objectif
 
-Créer une application Express simple qui utilise Mustache pour le rendu des vues et bodyParser pour lire les données POST des formulaires.
+Créer dans un sous-dossier une application Express simple qui utilise Mustache pour le rendu des vues et bodyParser pour lire les données POST des formulaires.
 
 ### Étapes d'installation
 
@@ -13,13 +13,14 @@ Créer une application Express simple qui utilise Mustache pour le rendu des vue
    - `mustache-express` : Moteur de templates pour rendre les vues.
    - `body-parser` : Middleware pour lire les données des formulaires POST.
    - `nodemon` : Outil pour redémarrer automatiquement le serveur lorsque des fichiers sont modifiés.
-   
+
+
    ```bash
    npm install mustache-express body-parser
    npm install --save-dev nodemon
    ```
 
-2. **Configuration de Nodemon :**
+1. **Configuration de Nodemon :**
 
 Dans le fichier package.json, ajoutez un script pour démarrer le serveur avec Nodemon :
 
@@ -61,37 +62,24 @@ app.listen(3000, () => {
 
 2. Création du dossier views et du fichier mon-template.mustache :
 
-Créez un dossier views dans votre répertoire de projet et ajoutez-y le fichier mon-template.mustache :
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Accueil</title>
-</head>
-<body>
-    <h1>{{ MyName }}</h1>
-    <img src="{{ MyImage }}" alt="Image de {{ MyName }}">
-</body>
-</html>
-```
+Créez un dossier views dans votre répertoire de projet et ajoutez-y le fichier mon-template.mustache.
+Ajouter le code HTML permettant d'afficher vos variables `MyName` et `MyImage`. 
 
 Rôle de chaque élément :
 
-`express` : Crée et configure le serveur web.
-`mustache-express` : Permet de rendre des templates Mustache.
-`body-parser` : Permet de lire les données des formulaires envoyées en POST.
-`app.engine` et `app.set` : Configurent le moteur de vues Mustache.
-`app.use` : Ajoute le middleware pour parser les données POST.
-`app.get` : Définit la route GET pour la page d'accueil qui rend le template mon-template.mustache avec les variables MyName et MyImage.
+- `express` : Crée et configure le serveur web.
+- `mustache-express` : Permet de rendre des templates Mustache.
+- `body-parser` : Permet de lire les données des formulaires envoyées en POST.
+- `app.engine` et `app.set` : Configurent le moteur de vues Mustache.
+- `app.use` : Ajoute le middleware pour parser les données POST.
+- `app.get` : Définit la route GET pour la page d'accueil qui rend le template mon-template.mustache avec les variables MyName et MyImage.
 
 
 ## Exercice 2
 
 ### Objectif
 
-Créer une application Express pour visualiser et ajouter des personnages Marvel. Les personnages sont stockés dans un fichier JSON.
+Créer dans un sous-dossier une application Express pour visualiser et ajouter des personnages Marvel. Les personnages sont stockés dans un fichier JSON.
 
 ### Étapes et Explications
 
@@ -117,56 +105,17 @@ Créez un fichier Marvel.json dans votre répertoire de projet avec le contenu s
 
 2. Création du fichier index.mustache dans le dossier views :
 
-Ajoutez un fichier index.mustache dans le dossier views :
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.3.0/css/pico.min.css">
-    <title>Personnages Marvel</title>
-</head>
-<body>
-    <h1>Ajouter un personnage Marvel</h1>
-    <form action="/add" method="POST" class="container">
-        <label for="nom">Nom:</label>
-        <input type="text" id="nom" name="nom" required>
-        <label for="serie">Série:</label>
-        <input type="text" id="serie" name="serie" required>
-        <label for="image">Image (URL):</label>
-        <input type="text" id="image" name="image" required>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
-        <button type="submit">Ajouter</button>
-    </form>
-    <h2>Liste des personnages</h2>
-    <ul class="container">
-        {{#personnages}}
-        <li>
-            <h3>{{ nom }}</h3>
-            <p>{{ serie }}</p>
-            <img src="{{ image }}" alt="{{ nom }}">
-            <p>{{ description }}</p>
-        </li>
-        {{/personnages}}
-    </ul>
-    {{#success}}
-    <p>Personnage ajouté avec succès !</p>
-    {{/success}}
-</body>
-</html>
-```
+Ajoutez un fichier index.mustache dans le dossier views.
+Y ajouter un formulaire HTML contenant les champs nécessaires (nom, série, image, description, et le bouton d'envoi).
+Ajouter ensuite un code permettant l'affichage des personnages présents dans le fichier json grâce aux variables définies dans le fichier `index.js`.
 
 3. Création du fichier index.js :
 
 Créez ou mettez à jour le fichier index.js avec le contenu suivant :
 
 ```javascript
-const express = require('express');
-const mustacheExpress = require('mustache-express');
-const bodyParser = require('body-parser');
-const fs = require('fs');
+// Ajouter les constantes pour `express`, `mustache-express`, `body-parser` et `fs`
+// 4 lignes
 
 const app = express();
 
@@ -175,7 +124,7 @@ app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
-// Middleware pour lire les données POST
+// Permettre la lecture des données POST
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Lecture du fichier JSON
@@ -185,21 +134,18 @@ const lirePersonnages = () => {
 };
 
 // Route GET pour afficher le formulaire et la liste des personnages
+// Créer la route
+
 app.get('/', (req, res) => {
-    const personnages = lirePersonnages();
+    // Créer la variable personnages contenant la méthode `lirePersonnages()`
     res.render('index', { personnages: personnages });
 });
 
 // Route POST pour ajouter un personnage
 app.post('/add', (req, res) => {
-    const personnages = lirePersonnages();
-    const nouveauPersonnage = {
-        nom: req.body.nom,
-        serie: req.body.serie,
-        image: req.body.image,
-        description: req.body.description
-    };
-    personnages.push(nouveauPersonnage);
+    // Créer la variable personnages contenant la méthode `lirePersonnages()`
+    // Créer la variable objet et y inclure les champs nécessaires (nom, serie, image, description)
+    // Faire un push du nouveauPersonnage dans le tableau personnages
     fs.writeFileSync('Marvel.json', JSON.stringify(personnages, null, 4));
     res.render('index', { personnages: personnages, success: true });
 });
