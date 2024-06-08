@@ -171,3 +171,7 @@ Rôle de chaque élément :
 - `app.get` : Affiche la page d'accueil avec le formulaire et la liste des personnages.
 - `app.post` : Ajoute un nouveau personnage à la liste et met à jour le fichier JSON.
 - `fs.writeFileSync` : Écrit les nouveaux personnages dans le fichier JSON avec une indentation automatique.
+
+4. CSS :
+
+Dans votre fichier `index.mustache`, lier un CSS simple du type Pico CSS pour améliorer l'affichage de votre page.
