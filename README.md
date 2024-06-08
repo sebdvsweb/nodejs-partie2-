@@ -158,7 +158,7 @@ app.listen(3000, () => {
 
 Rôle de chaque élément :
 
-`fs.readFileSync` : Lit le fichier JSON pour récupérer les personnages.
-`app.get` : Affiche la page d'accueil avec le formulaire et la liste des personnages.
-`app.post` : Ajoute un nouveau personnage à la liste et met à jour le fichier JSON.
-`fs.writeFileSync` : Écrit les nouveaux personnages dans le fichier JSON avec une indentation automatique.
+- `fs.readFileSync` : Lit le fichier JSON pour récupérer les personnages.
+- `app.get` : Affiche la page d'accueil avec le formulaire et la liste des personnages.
+- `app.post` : Ajoute un nouveau personnage à la liste et met à jour le fichier JSON.
+- `fs.writeFileSync` : Écrit les nouveaux personnages dans le fichier JSON avec une indentation automatique.
