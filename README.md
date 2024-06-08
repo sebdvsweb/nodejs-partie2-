@@ -8,7 +8,16 @@ Créer dans un sous-dossier une application Express simple qui utilise Mustache 
 
 ### Étapes d'installation
 
-1. **Installation des dépendances :**
+1. **Initialisation du projet Node.js :**
+
+Ouvrez votre projet dans VS Code et ouvrez le terminal de VS Code. 
+Ensuite, exécutez la commande suivante pour créer un fichier `package.json` :
+
+```bash
+npm init -y
+```
+
+2. **Installation des dépendances :**
    
    - `mustache-express` : Moteur de templates pour rendre les vues.
    - `body-parser` : Middleware pour lire les données des formulaires POST.
@@ -20,7 +29,7 @@ npm install mustache-express body-parser
 npm install --save-dev nodemon
 ```
 
-1. **Configuration de Nodemon :**
+3. **Configuration de Nodemon :**
 
 Dans le fichier package.json, ajoutez un script pour démarrer le serveur avec Nodemon :
 
