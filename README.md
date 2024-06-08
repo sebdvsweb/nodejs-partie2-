@@ -6,6 +6,10 @@
 
 Créer une application Express simple qui utilise Mustache pour le rendu des vues et bodyParser pour lire les données POST des formulaires.
 
+### Présentation 
+
+https://docs.google.com/presentation/d/1HSbkisJoDJxuLosDfAZUdidhvubge1-_OH1dOa4EKIU/edit#slide=id.g734747617e_0_1
+
 ### Étapes d'installation
 
 1. **Initialisation du projet Node.js :**
