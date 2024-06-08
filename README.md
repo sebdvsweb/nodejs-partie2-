@@ -120,7 +120,7 @@ Créez un fichier Marvel.json dans votre répertoire de projet avec le contenu s
 
 Ajoutez un fichier index.mustache dans le dossier views.
 Y ajouter un formulaire HTML contenant les champs nécessaires (nom, série, image, description, et le bouton d'envoi).
-Ajouter ensuite un code permettant l'affichage des personnages présents dans le fichier json grâce aux variables définies dans le fichier `index.js`.
+Ajouter ensuite un code permettant l'affichage des personnages présents dans le fichier json grâce aux variables définies dans le fichier `index_marvel.js`.
 
 3. Création du fichier index_marvel.js :
 
