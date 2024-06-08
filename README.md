@@ -15,10 +15,10 @@ Créer dans un sous-dossier une application Express simple qui utilise Mustache 
    - `nodemon` : Outil pour redémarrer automatiquement le serveur lorsque des fichiers sont modifiés.
 
 
-   ```bash
-   npm install mustache-express body-parser
-   npm install --save-dev nodemon
-   ```
+```bash
+npm install mustache-express body-parser
+npm install --save-dev nodemon
+```
 
 1. **Configuration de Nodemon :**
 
