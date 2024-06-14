@@ -179,3 +179,70 @@ Rôle de chaque élément :
 4. CSS :
 
 Dans votre fichier `index.mustache`, lier un CSS simple du type Pico CSS pour améliorer l'affichage de votre page.
+
+
+## Exercice 3
+
+### Objectif
+
+Créer une application Express pour visualiser, ajouter, modifier et supprimer des personnages Marvel depuis une base de données SQL
+
+### Étapes et Explications
+
+1. **Création de la base de données**
+
+Dans PhpMyAdmin, créer une table personnages et ajoutez-y les personnages de base.
+
+ - Création de la table :
+   
+```sql
+CREATE TABLE personnages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    serie VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL
+);
+```
+
+ - Ajout des personnages :
+
+```sql
+INSERT INTO personnages (nom, serie, image, description) VALUES
+('Iron Man', 'Iron Man', 'https://is3-ssl.mzstatic.com/image/thumb/ZypiNEdbU0wwCF0GMJ3zoA/1200x675mf.jpg', 'Iron Man est un super-héros de bande dessinée américaine créé en 1963 par Stan Lee, Larry Lieber, Don Heck et Jack Kirby. Il est apparu pour la première fois dans Tales of Suspense #39.'),
+('Spider-Man', 'The Amazing Spider-Man', 'https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Web_of_Spider-Man_Vol_1_129-1.png/220px-Web_of_Spider-Man_Vol_1_129-1.png', 'Spider-Man est un super-héros de bande dessinée américaine créé en 1962 par Stan Lee et Steve Ditko. Il est apparu pour la première fois dans Amazing Fantasy #15.');
+```
+
+2. **Installation de SQL**
+
+Ouvrez le terminal de VS Code. 
+Ensuite, exécutez la commande suivante pour installer le module SQL :
+
+```bash
+npm install mysql2
+```
+
+3. **Connexion à la base de données**
+
+Créer un fichier database.js et y ajouter le code suivant :
+
+```js
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+  host: ' ', // compléter avec vos valeurs
+  port: ' ', // compléter avec vos valeurs
+  user: ' ', // compléter avec vos valeurs
+  password: ' ', // compléter avec vos valeurs
+  database: ' ' // compléter avec vos valeurs
+});
+
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('Connexion réussie');
+});
+
+module.exports = connection;
+```
+
+Sauvegarder et lancer `node database.js`dans votre terminal VS Code. Le message 'Connexion réussie' devrait apparaître.
