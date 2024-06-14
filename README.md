@@ -311,7 +311,7 @@ C'est à vous de remplir les différentes routes avec les requêtes nécessaires
 6. **Création du fichier Mustache**
 
  - Créez le fichier `index-sql.mustache` et récupérer le code de votre fichier mustache de l'exercice 2.
- - Coller le dans ce nouveau fichier mustache, et adaptez le pour y ajouter dans la boucle `{{#personnages}}` un formulaire pour la modification d'un personnage et un autre formulaire pour la suppression d'un personnage.
+ - Collez le dans ce nouveau fichier mustache, et adaptez le pour y ajouter dans la boucle `{{#personnages}}` un formulaire pour la modification d'un personnage et un autre formulaire pour la suppression d'un personnage.
  - Vos formulaires POST doivent avoir en action `/delete/{{ id }}` (suppression) et `/edit/{{ id }}` (modification) pour cibler le personnage via son ID
 
 7. **Test**
