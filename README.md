@@ -35,7 +35,7 @@ npm install --save-dev nodemon
 
 3. **Configuration de Nodemon :**
 
-Dans le fichier package.json, ajoutez un script pour démarrer le serveur avec Nodemon :
+Dans le fichier `package.json`, ajoutez un script pour démarrer le serveur avec Nodemon :
 
 ```json
 "scripts": {
@@ -45,7 +45,7 @@ Dans le fichier package.json, ajoutez un script pour démarrer le serveur avec N
 
 ### Étapes et Explications
 
-1. Création du fichier index.js :
+1. Création du fichier `index.js` :
 
 ```javascript
 const express = require('express');
@@ -75,7 +75,7 @@ app.listen(3000, () => {
 
 2. Création du dossier views et du fichier mon-template.mustache :
 
-Créez un dossier views dans votre répertoire de projet et ajoutez-y le fichier mon-template.mustache.
+Créez un dossier `views` dans votre répertoire de projet et ajoutez-y le fichier `mon-template.mustache`.
 Ajouter le code HTML permettant d'afficher vos variables `MyName` et `MyImage`. 
 
 Rôle de chaque élément :
@@ -85,7 +85,7 @@ Rôle de chaque élément :
 - `body-parser` : Permet de lire les données des formulaires envoyées en POST.
 - `app.engine` et `app.set` : Configurent le moteur de vues Mustache.
 - `app.use` : Ajoute le middleware pour parser les données POST.
-- `app.get` : Définit la route GET pour la page d'accueil qui rend le template mon-template.mustache avec les variables MyName et MyImage.
+- `app.get` : Définit la route GET pour la page d'accueil qui rend le template mon-template.mustache avec les variables `MyName` et `MyImage`.
 
 
 ## Exercice 2
@@ -97,7 +97,7 @@ Créer une application Express pour visualiser et ajouter des personnages Marvel
 ### Étapes et Explications
 
 1. Création du fichier Marvel.json :
-Créez un fichier Marvel.json dans votre répertoire de projet avec le contenu suivant :
+Créez un fichier `Marvel.json` dans votre répertoire de projet avec le contenu suivant :
 
 ```json
 [
@@ -118,13 +118,13 @@ Créez un fichier Marvel.json dans votre répertoire de projet avec le contenu s
 
 2. Création du fichier index.mustache dans le dossier views :
 
-Ajoutez un fichier index.mustache dans le dossier views.
+Ajoutez un fichier `index.mustache` dans le dossier `views`.
 Y ajouter un formulaire HTML contenant les champs nécessaires (nom, série, image, description, et le bouton d'envoi).
-Ajouter ensuite un code permettant l'affichage des personnages présents dans le fichier json grâce aux variables définies dans le fichier `index_marvel.js`.
+Ajoutez ensuite un code permettant l'affichage des personnages présents dans le fichier json grâce aux variables définies dans le fichier `index_marvel.js`.
 
 3. Création du fichier index_marvel.js :
 
-Créez ou mettez à jour le fichier index.js avec le contenu suivant :
+Créez ou mettez à jour le fichier `index_marvel.js` avec le contenu suivant :
 
 ```javascript
 // Ajouter les constantes pour `express`, `mustache-express`, `body-parser` et `fs`
@@ -224,7 +224,7 @@ npm install mysql2
 
 3. **Connexion à la base de données**
 
-Créer un fichier database.js et y ajouter le code suivant :
+Créer un fichier `database.js` et y ajouter le code suivant :
 
 ```js
 const mysql = require('mysql2');
@@ -246,3 +246,74 @@ module.exports = connection;
 ```
 
 Sauvegarder et lancer `node database.js`dans votre terminal VS Code. Le message 'Connexion réussie' devrait apparaître.
+
+4. **Connexion à la base de données**
+
+5. **Création des routes**
+
+Créer un fichier `index_sql.js` et y ajouter le code suivant :
+
+```js
+// Gestion des dépendances
+const express = require('express');
+const mustacheExpress = require('mustache-express');
+const bodyParser = require('body-parser');
+const db = require('./database');
+
+// Lancement d'Express
+const app = express();
+
+// Configuration du moteur de vues
+app.engine('mustache', mustacheExpress());
+app.set('view engine', 'mustache');
+app.set('views', __dirname + '/views');
+
+// Lecture des données POST
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Routes pour les interactions SQL
+app.get('/', (req, res) => {
+    // faire la requête SQL nécessaire dans une constante pour l'affichage des personnages
+    // Gérer les éventuelles erreurs
+    // Rendre le résultat dans index_sql
+});
+
+app.post('/add', (req, res) => {
+    const { nom, serie, image, description } = req.body;
+    // Faire la requête en variable pour ajouter un personnage à la base de données
+    // Ajouter les données
+    // Gérer les éventuelles erreurs
+    // Rediriger vers la page '/'
+});
+
+app.post('/delete/:id', (req, res) => {
+    const { id } = req.params;
+    // Faire la requête en variable pour supprimer un personnage via son ID
+    // Gérer les éventuelles erreurs
+    // Rediriger vers la page '/'
+});
+
+app.post('/edit/:id', (req, res) => {
+    const { id } = req.params;
+    const { nom, serie, image, description } = req.body;
+    // Faire la requête en variable pour modifier un personnage via son ID
+    // Gérer les éventuelles erreurs
+    // Rediriger vers la page '/'
+});
+
+// Démarrage du serveur
+app.listen(3002, () => {
+    console.log('Serveur SQL démarré sur http://localhost:3002');
+});
+``` 
+C'est à vous de remplir les différentes routes avec les requêtes nécessaires à la mise en place du CRUD.
+
+6. **Création du fichier Mustache**
+
+ - Créez le fichier `index-sql.mustache` et récupérer le code de votre fichier mustache de l'exercice 2.
+ - Coller le dans ce nouveau fichier mustache, et adaptez le pour y ajouter dans la boucle `{{#personnages}}` un formulaire pour la modification d'un personnage et un autre formulaire pour la suppression d'un personnage.
+ - Vos formulaires POST doivent avoir en action `/delete/{{ id }}` (suppression) et `/edit/{{ id }}` (modification) pour cibler le personnage via son ID
+
+7. **Test**
+
+Testez votre application !
