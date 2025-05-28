@@ -130,20 +130,18 @@ Créez ou mettez à jour le fichier `index_marvel.js` avec le contenu suivant :
 // Ajouter les constantes pour `express`, `mustache-express`, `body-parser` et `fs`
 // 4 lignes
 
-const app = express();
+// Lancer l'app express
 
-// Configuration du moteur de vues
-app.engine('mustache', mustacheExpress());
-app.set('view engine', 'mustache');
-app.set('views', __dirname + '/views');
+
+// Configurer le moteur de vues
 
 // Permettre la lecture des données POST
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Lecture du fichier JSON
 const lirePersonnages = () => {
-    const data = fs.readFileSync('Marvel.json');
-    return JSON.parse(data);
+    const data = fs.readFileSync('Marvel.json'); // Lecture du fichier json
+    return JSON.parse(data); // // conversion du contenu du fichier en objet JavaScript
 };
 
 // Route GET pour afficher le formulaire et la liste des personnages
@@ -151,7 +149,7 @@ const lirePersonnages = () => {
 
 app.get('/', (req, res) => {
     // Créer la variable personnages contenant la méthode `lirePersonnages()`
-    res.render('index', { personnages: personnages });
+    // Afficher dans index.mustache
 });
 
 // Route POST pour ajouter un personnage
