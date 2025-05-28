@@ -118,7 +118,7 @@ Créez un fichier `Marvel.json` dans votre répertoire de projet avec le contenu
 
 2. Création du fichier index.mustache dans le dossier views :
 
-Ajoutez un fichier `index.mustache` dans le dossier `views`.
+Ajoutez un fichier `marvel.mustache` dans le dossier `views`.
 Y ajouter un formulaire HTML contenant les champs nécessaires (nom, série, image, description, et le bouton d'envoi).
 Ajoutez ensuite un code permettant l'affichage des personnages présents dans le fichier json grâce aux variables définies dans le fichier `index_marvel.js`.
 
@@ -140,7 +140,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Lecture du fichier JSON
 const lirePersonnages = () => {
-    const data = fs.readFileSync('Marvel.json'); // Lecture du fichier json
+    const data = fs.readFileSync('marvel.json'); // Lecture du fichier json
     return JSON.parse(data); // // conversion du contenu du fichier en objet JavaScript
 };
 
@@ -149,7 +149,7 @@ const lirePersonnages = () => {
 
 app.get('/', (req, res) => {
     // Créer la variable personnages contenant la méthode `lirePersonnages()`
-    // Afficher dans index.mustache
+    // Afficher dans marvel.mustache
 });
 
 // Route POST pour ajouter un personnage
@@ -157,8 +157,8 @@ app.post('/add', (req, res) => {
     // Créer la variable personnages contenant la méthode `lirePersonnages()`
     // Créer la variable objet et y inclure les champs nécessaires (nom, serie, image, description)
     // Faire un push du nouveauPersonnage dans le tableau personnages
-    fs.writeFileSync('Marvel.json', JSON.stringify(personnages, null, 4));
-    res.render('index', { personnages: personnages, success: true });
+    fs.writeFileSync('marvel.json', JSON.stringify(personnages, null, 4));
+    res.render('marvel', { personnages: personnages, success: true });
 });
 
 // Démarrage du serveur
