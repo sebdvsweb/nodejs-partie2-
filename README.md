@@ -176,7 +176,7 @@ Rôle de chaque élément :
 
 4. CSS :
 
-Dans votre fichier `index.mustache`, lier un CSS simple du type Pico CSS pour améliorer l'affichage de votre page.
+Dans votre fichier `marvel.mustache`, lier un CSS simple du type Pico CSS pour améliorer l'affichage de votre page.
 
 
 ## Exercice 3
